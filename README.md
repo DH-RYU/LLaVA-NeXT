@@ -235,3 +235,13 @@ If you find it useful for your research and applications, please cite related pa
 For future project ideas, please check out:
 - [SEEM: Segment Everything Everywhere All at Once](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once)
 - [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything) to detect, segment, and generate anything by marrying [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO) and [Segment-Anything](https://github.com/facebookresearch/segment-anything).
+
+## Running on NVCR Pytorch Docker Image
+
+We've modified `./pyproject.toml` for running on nvcr pytorch image
+
+```
+host$ docker run --gpus all --ipc host -it -v /metavision/:/metavision/ nvcr.io/nvidia/pytorch:23.06-py3 /bin/bash
+docker$ pip install --upgrade pip
+docker$ pip install -e ".[train_docker]"
+```
