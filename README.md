@@ -239,9 +239,13 @@ For future project ideas, please check out:
 ## Running on NVCR Pytorch Docker Image
 
 We've modified `./pyproject.toml` for running on nvcr pytorch image
-
+Also, there is an import error when first installing
 ```
 host$ docker run --gpus all --ipc host -it -v /metavision/:/metavision/ nvcr.io/nvidia/pytorch:23.06-py3 /bin/bash
 docker$ pip install --upgrade pip
-docker$ pip install -e ".[train_docker]"
+docker$ pip uninstall -y flash-attn
+docker$ pip uninstall -y torchdata torchtext
+docker$ pip install -e .
+docker$ pip install -e ".[train]"
+docker$ pip install flash-attn==2.5.2 --no-build-isolation
 ```
